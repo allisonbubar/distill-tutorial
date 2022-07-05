@@ -1,7 +1,7 @@
 ---
-title: "Title of My Final Project"
+title: "NNHS Basketball Team 2022/23 Evaluation"
 description: |
-  "This is where I will describe my final project."
+  Twenty of the NNHS women's basketball games were filmed and uploaded to hudl this season. Hudl evaluated the games and provided data on the team performance and individual players performance. I evaluated the 3 point percentage of the team over time, field goal percentage at games we lost vs won, turnovers in wins vs losses, and the total point value by class and average point value by class.
 site: distill::distill_website
 ---
 
@@ -10,18 +10,133 @@ knitr::opts_chunk$set(echo = FALSE)
 
 library(tidyverse)
 library(ggthemes)
+library(knitr)
+library(rvest)
+library(janitor)
+library(googlesheets4)
+library(googledrive)
 
 ```
 
-```{r car-plot}
+```{r}
+data <- "https://docs.google.com/spreadsheets/d/1GRhMYxE2gic4E0dUuj8ma0_DNh8XykXW8fkjRlDtpnM/edit#gid=0"
 
-mtcars |> 
-   select(mpg, wt) |> 
-   ggplot(mapping = aes(x = wt, y = mpg))+ 
-   geom_point()+ 
-   geom_smooth(method = "lm", formula = y ~ x, se = FALSE)+ 
-   theme_clean()+ 
-   labs(title = "Title", subtitle = "Subtitle", x = "x axis", y = "y axis", caption = "mtcars")
+x <- data |>
+  read_html() |>
+  html_elements("table") |>
+  html_table()
+
+table <- x[[1]] 
 
 ```
 
+
+*Grinell system explanation* My data analysis of our wins and losses aims to uncover the factors that determined wins vs losses and what goals we as a team should set to give ourselves the best chance at winning.
+
+```{r}
+table |>
+  select(B, C, O, P) |>
+  filter(O != "PF") |>
+  mutate(O = parse_number(O), P = parse_number(P)) |>
+  mutate(Difference = O - P) |>
+  ggplot(aes(x = Difference, y = C, color = B))+
+  geom_point()+
+  xlim(-30, 30)+
+  theme_clean()+
+  labs(title = "Point Differential and Field Goals Made", subtitle = "Win or lose FGM was consistent throughout the season.", x = "Point Differential", y = "Field Goals Made")
+  
+```
+
+Regardless of win or loss our field goals made were pretty much the same. However, our field goal percentage was a major indicator of success. 
+
+```{r}
+table |>
+  select(B, E, O, P) |>
+  filter(O != "PF") |>
+  filter(E != "43.10%") |>
+  mutate(O = parse_number(O), P = parse_number(P)) |>
+  mutate(Difference = O - P) |>
+  ggplot(aes(x = Difference, y = E, color = B))+
+  geom_point()+
+  xlim(-30, 30)+
+  theme_clean()+
+  labs(title = "Point Differential and Field Goal Percentage", subtitle = "FG% was higher in games won.", x = "Point Differential", y = "Field Goal %")
+```
+
+Our field goal percentage was significantly higher in games we won even though we didn't make more shots than average. This indicates that what helped our team was limiting possessions and limiting misses. Every possession that ends in a miss allows the other team to get an opportunity, especially in tight games, those opportunities need to be limited. We didn't win any games where our field goal percent was below 30. 
+
+GOAL #1: FG% above 30%
+
+```{r 3 point percentage}
+table |>
+  select(B, K, O, P) |>
+  filter(O != "PF") |>
+  mutate(O = parse_number(O), P = parse_number(P)) |>
+  mutate(Difference = O - P) |>
+  ggplot(aes(x = Difference, y = K, color = B))+
+  geom_point()+
+  xlim(-30, 30)+
+  theme_clean()+
+  labs(title = "Point Differential and 3 Point Percentage", subtitle = "3P% was higher in games won.", x = "Point Differential", y = "3 Point %")
+```
+
+Though 3 points made varied from wins to losses. Every game where we shot above 21% from the 3 point line, we won. 
+
+GOAL #2: 3FG% above 21%
+
+```{r PF graph}
+table |>
+  select(B, O, P) |>
+  filter(O != "PF") |>
+  mutate(O = parse_number(O), P = parse_number(P)) |>
+  mutate(Difference = O - P) |>
+  ggplot(aes(x = Difference, y = O, color = B))+
+  geom_point()+
+  xlim(-30, 30)+
+  theme_clean()+
+  labs(title = "Point Differential and Points Scored", subtitle = "Points scored was consistent in wins and losses.", x = "Point Differential", y = "Points Scored")
+```
+
+Our points scored didn't vary much in wins vs losses.
+
+```{r PA graph}
+table |>
+  select(B, O, P) |>
+  filter(O != "PF") |>
+  mutate(O = parse_number(O), P = parse_number(P)) |>
+  mutate(Difference = O - P) |>
+  ggplot(aes(x = Difference, y = P, color = B))+
+  geom_point()+
+  xlim(-30, 30)+
+  theme_clean()+
+  labs(title = "Point Differential and Points Against", subtitle = "Points against is heavily correlated with wins vs losses.", x = "Point Differential", y = "Points Against")
+```
+
+Points against was the major determinant of whether or not we won. Every team we kept below 38 points, we beat. 
+
+GOAL #3: Give away only 10 pts a quarter. 
+
+This is an ambitious goal, and one of the ways to acheive it we mentioned above, limiting possessions. The second strategy that worked for NNHS was getting steals and deflections
+
+```{r DEFL/STLS wins vs losses}
+table |>
+  select(B, O, P, Q, R) |>
+  filter(O != "PF") |>
+  mutate(O = parse_number(O), P = parse_number(P), Q = parse_number(Q), R = parse_number(R)) |>
+  mutate(Difference = O - P) |>
+  mutate(Defense = Q+R) |>
+  ggplot(aes(x = Difference, y = Defense, color = B))+
+  geom_point()+
+  xlim(-30, 30)+
+  theme_clean()+
+  labs(title = "Point Differential and Deflections/ Steals", subtitle = "Games with more deflections and steals are more successful.", x = "Point Differential", y = "Deflections and Steals")
+```
+
+Though we won games with low deflection and steal numbers, we were much more effective when we got steals and deflections. We won every game with 9 or more deflections and every game with 10 or more steals. To achieve this we will probably have to full court press in a more effective way than last year.  
+
+GOAL #4: Combined 18 deflections and steals. 
+
+
+A note: There are two major sources of error for this project. 
+1. Hudl is not perfect. It isn't always 100% accurate and I did not double check the data by hand.
+2. My coach didn't upload every game to Hudl. In fact, she often chose to not upload our more devastating losses. This will definitely schew the data and I want to recognize that the hypothesis drawn are made with that data bias in mind.

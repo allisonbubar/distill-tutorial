@@ -8,3 +8,16 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## About Me
+My name is *Allison Bubar*. I go to Newton North High School. My interests include basketball, and volleyball.
+
+## About the Project
+My project, *NNHS Women's Basketball 2022/23 Evaluation*, draws correlations between statistical categories and success for the team.
+
+### Goals
+  + honestly evaluate my team in a way that could help future growth
+  + provide data that explores the roots of what helps the team be successful
+  + create a theoretical system that could help the team be successful.
+  
+|
+["Kane’s Free High School Data Science Bootcamp”](https://bootcamp.davidkane.info)

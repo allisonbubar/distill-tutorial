@@ -1,0 +1,12 @@
+---
+title: "Source A"
+description: "detailed notes for source A"
+author:
+  - name: Allison Bubar
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```

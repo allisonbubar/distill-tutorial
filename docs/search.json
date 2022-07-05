@@ -5,16 +5,52 @@
       "title": "About this site",
       "description": "Some additional details about the website",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2022-06-29T22:24:01-04:00"
+      "contents": "\nAbout Me\nMy name is Allison Bubar. I go to Newton North High School.\nMy interests include basketball, and volleyball.\nAbout the Project\nMy project, NNHS Women’s Basketball 2022/23 Evaluation,\ndraws correlations between statistical categories and success for the\nteam.\nGoals\nhonestly evaluate my team in a way that could help future\ngrowth\nprovide data that explores the roots of what helps the team be\nsuccessful\ncreate a theoretical system that could help the team be\nsuccessful.\n\n“Kane’s Free High School\nData Science Bootcamp”\n\n\n\n",
+      "last_modified": "2022-07-05T15:59:12-04:00"
+    },
+    {
+      "path": "conclusions.html",
+      "title": "The NNHS System",
+      "author": [],
+      "date": "2022-07-04",
+      "contents": "\n\n\n\n\n\n\n\n\nNNHS Women's Basketball\n\n\nHome\nAbout\nConclusions\n\n\nSources\n \n▾\n\n\nSource A\nSource B\n\n\n☰\n\n\n  \n    \n      \n        \n        \n        \n      \n      \n    \n    \n      \n  Home\n\n\n  About\n\n\n  Conclusions\n\n\n  \n    Sources\n     \n    \n  \n  \n      Source A\n    \n    \n      Source B\n    \n  \n      \n  \n\n\n\n\n\n\nThe NNHS System\n2022-07-04\n\n\n\n\nGOAL #1: FG% above 30%\nGOAL #2: 3FG% above 21%\nGOAL #3: Give away only 10 pts a quarter\nGOAL #4: Combined 18 deflections and steals\n\n\n\n\n\n\n\n\n\n\n",
+      "last_modified": "2022-07-05T15:59:13-04:00"
     },
     {
       "path": "index.html",
-      "title": "Title of My Final Project",
-      "description": "\"This is where I will describe my final project.\"\n",
+      "title": "NNHS Basketball Team 2022/23 Evaluation",
+      "description": "Twenty of the NNHS women's basketball games were filmed and uploaded to hudl this season. Hudl evaluated the games and provided data on the team performance and individual players performance. I evaluated the 3 point percentage of the team over time, field goal percentage at games we lost vs won, turnovers in wins vs losses, and the total point value by class and average point value by class.\n",
       "author": [],
-      "contents": "\n\n\n\n\n\n\n",
-      "last_modified": "2022-06-29T22:24:09-04:00"
+      "contents": "\n\n\n\nGrinell system explanation My data analysis of our wins and\nlosses aims to uncover the factors that determined wins vs losses and\nwhat goals we as a team should set to give ourselves the best chance at\nwinning.\n\n\n\nRegardless of win or loss our field goals made were pretty much the\nsame. However, our field goal percentage was a major indicator of\nsuccess.\n\n\n\nOur field goal percentage was significantly higher in games we won\neven though we didn’t make more shots than average. This indicates that\nwhat helped our team was limiting possessions and limiting misses. Every\npossession that ends in a miss allows the other team to get an\nopportunity, especially in tight games, those opportunities need to be\nlimited. We didn’t win any games where our field goal percent was below\n30.\nGOAL #1: FG% above 30%\n\n\n\nThough 3 points made varied from wins to losses. Every game where we\nshot above 21% from the 3 point line, we won.\nGOAL #2: 3FG% above 21%\n\n\n\nOur points scored didn’t vary much in wins vs losses.\n\n\n\nPoints against was the major determinant of whether or not we won.\nEvery team we kept below 38 points, we beat.\nGOAL #3: Give away only 10 pts a quarter.\nThis is an ambitious goal, and one of the ways to acheive it we\nmentioned above, limiting possessions. The second strategy that worked\nfor NNHS was getting steals and deflections\n\n\n\nThough we won games with low deflection and steal numbers, we were\nmuch more effective when we got steals and deflections. We won every\ngame with 9 or more deflections and every game with 10 or more steals.\nTo achieve this we will probably have to full court press in a more\neffective way than last year.\nGOAL #4: Combined 18 deflections and steals.\nA note: There are two major sources of error for this project. 1.\nHudl is not perfect. It isn’t always 100% accurate and I did not double\ncheck the data by hand. 2. My coach didn’t upload every game to Hudl. In\nfact, she often chose to not upload our more devastating losses. This\nwill definitely schew the data and I want to recognize that the\nhypothesis drawn are made with that data bias in mind.\n\n\n\n",
+      "last_modified": "2022-07-05T15:59:25-04:00"
+    },
+    {
+      "path": "source_A.html",
+      "title": "Source A",
+      "description": "detailed notes for source A",
+      "author": [
+        {
+          "name": "Allison Bubar",
+          "url": {}
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-07-05T15:59:26-04:00"
+    },
+    {
+      "path": "source_B.html",
+      "title": "Source B",
+      "description": "Detailed notes for Source B",
+      "author": [
+        {
+          "name": "Allison Bubar",
+          "url": {}
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-07-05T15:59:27-04:00"
     }
   ],
   "collections": []

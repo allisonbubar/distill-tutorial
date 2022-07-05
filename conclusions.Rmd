@@ -1,0 +1,17 @@
+---
+title: "The NNHS System"
+output: html_document
+date: '2022-07-04'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+GOAL #1: FG% above 30%
+
+GOAL #2: 3FG% above 21%
+
+GOAL #3: Give away only 10 pts a quarter
+
+GOAL #4: Combined 18 deflections and steals
